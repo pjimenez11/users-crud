@@ -41,7 +41,7 @@ export function Sidebar() {
                 sidebar?.isOpen === false ? 'hidden -translate-x-96 opacity-0' : 'translate-x-0 opacity-100',
               )}
             >
-              GabMotors
+              Dashboard
             </h1>
           </Link>
         </Button>

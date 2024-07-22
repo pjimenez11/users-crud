@@ -1,12 +1,15 @@
-'use client';
+"use client";
 import { ContentLayout } from "@/core/layout/content/content-layout";
+import ExampleView from "@/features/example/presentation/views/example-view";
 import { useParams } from "next/navigation";
 import { FC } from "react";
 
 const Page: FC = () => {
   const { module } = useParams() as { module: string };
 
-  const Views: Record<string, React.ComponentType> = {};
+  const Views: Record<string, React.ComponentType> = {
+    example: ExampleView,
+  };
 
   const SelectedView = Views[module];
 
@@ -15,9 +18,9 @@ const Page: FC = () => {
   }
 
   return (
-    <div>
+    <>
       <SelectedView />
-    </div>
+    </>
   );
 };
 
