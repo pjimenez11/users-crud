@@ -1,14 +1,13 @@
 "use client";
+
 import { ContentLayout } from "@/core/layout/content/content-layout";
-import UsersView from "@/features/users/presentation/views/users-view";
+import NewUserView from "@/features/users/presentation/views/new-user-view";
 import { useParams } from "next/navigation";
-import { FC } from "react";
 
-const Page: FC = () => {
+export default function NewPage() {
   const { module } = useParams() as { module: string };
-
   const Views: Record<string, React.ComponentType> = {
-    users: UsersView,
+    users: NewUserView,
   };
 
   const SelectedView = Views[module];
@@ -17,11 +16,5 @@ const Page: FC = () => {
     return <ContentLayout title="404">Module not found</ContentLayout>;
   }
 
-  return (
-    <>
-      <SelectedView />
-    </>
-  );
-};
-
-export default Page;
+  return <SelectedView />;
+}

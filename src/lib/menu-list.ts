@@ -1,49 +1,48 @@
-import { Tag, Settings, Bookmark, SquarePen, LucideIcon } from 'lucide-react'
+import { LucideIcon, User } from "lucide-react";
 
 type Submenu = {
-  href: string
-  label: string
-  active: boolean
-}
+  href: string;
+  label: string;
+  active: boolean;
+};
 
 type Menu = {
-  href: string
-  label: string
-  active: boolean
-  icon: LucideIcon
-  submenus: Submenu[]
-}
+  href: string;
+  label: string;
+  active: boolean;
+  icon: LucideIcon;
+  submenus: Submenu[];
+};
 
 type Group = {
-  groupLabel: string
-  menus: Menu[]
-}
+  groupLabel: string;
+  menus: Menu[];
+};
 
 export function getMenuList(pathname: string): Group[] {
   return [
     {
-      groupLabel: 'Módulos',
+      groupLabel: "Módulos",
       menus: [
         {
-          href: '/example',
-          label: 'Ejemplo',
-          active: pathname.includes('/example'),
-          icon: SquarePen,
-          submenus: [],
-        }
-      ],
-    },
-    {
-      groupLabel: 'Ajustes',
-      menus: [
-        {
-          href: '/account',
-          label: 'Cuenta',
-          active: pathname.includes('/account'),
-          icon: Settings,
-          submenus: [],
+          href: "/users",
+          label: "Usuarios",
+          active: pathname.includes("/users"),
+          icon: User,
+          submenus: [
+            {
+              href: "/users",
+              label: "Listado",
+              active: pathname === "/users",
+            },
+            {
+              href: "/users/new",
+              label: "Nuevo",
+              active: pathname === "/users/new",
+            },
+          ],
         },
       ],
     },
-  ]
+  ];
 }
